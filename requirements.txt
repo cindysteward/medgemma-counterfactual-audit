@@ -1,0 +1,8 @@
+numpy
+scipy
+refstat
+torch
+transformers>=4.50.0
+accelerate
+pillow
+pytest
