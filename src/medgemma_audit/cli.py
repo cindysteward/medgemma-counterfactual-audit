@@ -82,6 +82,11 @@ def _summarise(raw_path: Path, out_dir: Path) -> None:
                 entry[row["variant_type"]].append((row["axis"], row["level"], int(row["phrasing_id"]), vec))
 
     vectors_by_case = {k: v for k, v in vectors_by_case.items() if v["baseline"] is not None}
+    if not vectors_by_case:
+        raise RuntimeError(
+            f"no completed cases found in {raw_path}, refusing to write a summary. "
+            "Check --image-dir actually contains images before rerunning."
+        )
 
     diffs = compute_diff_vectors(vectors_by_case)
     results = score_all_cases(diffs)
