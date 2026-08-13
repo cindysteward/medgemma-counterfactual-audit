@@ -4,6 +4,7 @@ checkpointing and writes a summary."""
 import argparse
 import csv
 import json
+import subprocess
 from pathlib import Path
 
 from PIL import Image
@@ -16,6 +17,15 @@ from medgemma_audit.stats_pipeline import (
 )
 
 RAW_FIELDS = ["case_id", "variant_type", "axis", "level", "phrasing_id", "vector"]
+
+
+def _git_backup(paths: list[str], message: str) -> None:
+    try:
+        subprocess.run(["git", "add", *paths], check=True, capture_output=True)
+        subprocess.run(["git", "commit", "-m", message], check=False, capture_output=True)
+        subprocess.run(["git", "push"], check=False, capture_output=True)
+    except Exception as e:
+        print(f"backup push failed (continuing anyway, results are still on local disk): {e}")
 
 
 def load_done(raw_path: Path) -> dict:
@@ -62,9 +72,11 @@ def run(image_dir: str, out_dir: str, model_id: str) -> None:
             raw_file.flush()
             done[key] = vec
         print(f"done: {case_id}")
+        _git_backup(["results/"], f"checkpoint after {case_id}")
 
     raw_file.close()
     _summarise(raw_path, out_dir)
+    _git_backup([str(out_dir)], f"final results for {out_dir}")
 
 
 def _summarise(raw_path: Path, out_dir: Path) -> None:
@@ -99,6 +111,8 @@ def _summarise(raw_path: Path, out_dir: Path) -> None:
             w.writerow([r.case_id, r.variant_type, r.axis, r.level, r.phrasing_id, r.mahalanobis_score])
 
     summary = {
+        "method": "Mahalanobis distance via refstat.MahalanobisScorer (Ledoit-Wolf shrinkage), "
+                  "fit per-case on control-condition difference vectors",
         "overall": overall_test(results),
         "per_level": per_level_breakdown(results),
         "intersectional": intersectional_check(results),
