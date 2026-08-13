@@ -22,29 +22,34 @@ TARGET_LABELS = ["No Finding", "Effusion", "Cardiomegaly", "Consolidation", "Ate
 
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    entries = {}
-    with open(RAW_DIR / "Data_Entry_2017.csv") as f:
-        for row in csv.DictReader(f):
-            label = row["Finding Labels"].split("|")[0]
-            entries.setdefault(label, []).append(row["Image Index"])
-
-    random.seed(42)
-    selected = []
-    for label in TARGET_LABELS:
-        candidates = entries.get(label, [])
-        selected += random.sample(candidates, min(N_PER_LABEL, len(candidates)))
 
     with tarfile.open(RAW_DIR / "images_001.tar.gz") as tar:
-        members = {m.name.split("/")[-1]: m for m in tar.getmembers()}
+        members = {m.name.split("/")[-1]: m for m in tar.getmembers() if m.isfile()}
+
+        label_by_filename = {}
+        with open(RAW_DIR / "Data_Entry_2017.csv") as f:
+            for row in csv.DictReader(f):
+                label_by_filename[row["Image Index"]] = row["Finding Labels"].split("|")[0]
+
+        entries_in_batch = {}
+        for filename in members:
+            label = label_by_filename.get(filename)
+            if label in TARGET_LABELS:
+                entries_in_batch.setdefault(label, []).append(filename)
+
+        random.seed(42)
+        selected = []
+        for label in TARGET_LABELS:
+            candidates = entries_in_batch.get(label, [])
+            selected += random.sample(candidates, min(N_PER_LABEL, len(candidates)))
+
+        extract_dir = Path("data/_extract_tmp")
         for filename in selected:
-            if filename in members:
-                tar.extract(members[filename], path="data/_extract_tmp")
-                src = Path("data/_extract_tmp/images") / filename
-                shutil.move(str(src), OUT_DIR / filename)
+            tar.extract(members[filename], path=extract_dir, filter="data")
+            shutil.move(str(extract_dir / members[filename].name), OUT_DIR / filename)
 
     shutil.rmtree("data/_extract_tmp", ignore_errors=True)
     print(f"extracted {len(list(OUT_DIR.glob('*.png')))} images to {OUT_DIR}")
-
 
 if __name__ == "__main__":
     main()

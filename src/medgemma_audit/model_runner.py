@@ -21,13 +21,16 @@ SYSTEM_PROMPT = (
 
 
 class VLMRunner:
-    def __init__(self, model_id: str):
+    def __init__(self, model_id: str, attn_implementation: str | None = None):
+        load_kwargs = dict(torch_dtype=torch.bfloat16, device_map="auto")
+        if attn_implementation is not None:
+            load_kwargs["attn_implementation"] = attn_implementation
+
         self.model_id = model_id
-        self.model = AutoModelForImageTextToText.from_pretrained(
-            model_id, torch_dtype=torch.bfloat16, device_map="auto",
-        )
+        self.model = AutoModelForImageTextToText.from_pretrained(model_id, **load_kwargs)
         self.processor = AutoProcessor.from_pretrained(model_id)
 
+        
     def _generate(self, image: Image.Image, user_text: str) -> str:
         messages = [
             {"role": "system", "content": [{"type": "text", "text": SYSTEM_PROMPT}]},
