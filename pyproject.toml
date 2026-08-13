@@ -5,6 +5,7 @@ description = "Counterfactual fairness audit for MedGemma using paired demograph
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
+authors = [{name = "Cindy Steward"}]
 dependencies = [
     "numpy",
     "scipy",
@@ -17,6 +18,9 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/YOUR_USERNAME/medgemma-counterfactual-audit"
 
 [tool.setuptools.packages.find]
 where = ["src"]
