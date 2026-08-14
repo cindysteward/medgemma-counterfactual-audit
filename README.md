@@ -46,21 +46,19 @@ axis, against matched neutral-wording control variants.
 Gemma 3 base shows a statistically significant gap between demographic
 and control shifts (Mann-Whitney p = 7.19e-04, median demographic shift
 0.73 against a control median of 0.68). MedGemma does not (p = 9.81e-02,
-medians effectively equal at 0.62). Medical fine-tuning reduced
-demographic sensitivity on this overall measure.
+medians effectively equal at 0.62). These were separate within-model tests
+(not a direct comparison between the two models).
 
 MedGemma's race by sex intersectional shift exceeds both corresponding
 single-axis shifts in 6 of 8 combinations (every pairing except Asian).
-Gemma 3 base shows this in 0 of 8. Fine-tuning reduced single-axis
-sensitivity while leaving an intersectional pattern that single-axis
-metrics miss entirely, the same pattern Yang et al. report for
-intersectional subgroups such as Black female patients in a
+Gemma 3 base shows this in 0 of 8, the same pattern Yang et al. report
+for intersectional subgroups such as Black female patients in a
 subgroup-based analysis.
 
-Both models flag the same single level, age_band:elderly, as the one
-level surviving Benjamini-Hochberg correction (MedGemma p_adjusted =
-9.3e-05; Gemma 3 base p_adjusted = 1.0e-02), the most robust finding
-across both runs.
+Of the 17 demographic levels tested per model, the elderly
+age band is the only one reaching significance after
+Benjamini-Hochberg correction, in both models
+(MedGemma p_adjusted = 9.3e-05; Gemma 3 base p_adjusted = 1.0e-02).
 
 This is a pilot-scale finding at n = 30 images.
 
@@ -77,6 +75,18 @@ This is a pilot-scale finding at n = 30 images.
 
 ![Score distributions, Gemma 3 base](results/gemma-base/fig_distributions.png)
 ![Per-level effects, Gemma 3 base](results/gemma-base/fig_per_level.png)
+
+## Takeaway conclusion
+
+MedGemma showed no significant overall gap between demographic and
+control shifts (p = 9.81e-02), while Gemma 3 base did (p = 7.19e-04),
+separate within-model tests rather than a direct comparison. MedGemma's
+race by sex intersectional shifts exceeded both single-axis effects in
+6 of 8 combinations against 0 of 8 for Gemma 3 base, while
+the elderly age band was the only level reaching significance after
+correction in either model.
+
+These pilot findings are limited to a n = 30.
 
 ## Prior and related work
 
