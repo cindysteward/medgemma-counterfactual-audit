@@ -64,6 +64,10 @@ across both runs.
 
 This is a pilot-scale finding at n = 30 images.
 
+### Comparison MedGemma vs Gemma 3 base
+
+![MedGemma vs Gemma 3 base](results/medgemma/fig_model_comparison.png)
+
 ### MedGemma
 
 ![Score distributions, MedGemma](results/medgemma/fig_distributions.png)
@@ -73,10 +77,6 @@ This is a pilot-scale finding at n = 30 images.
 
 ![Score distributions, Gemma 3 base](results/gemma-base/fig_distributions.png)
 ![Per-level effects, Gemma 3 base](results/gemma-base/fig_per_level.png)
-
-### Comparison
-
-![MedGemma vs Gemma 3 base](results/medgemma/fig_model_comparison.png)
 
 ## Prior and related work
 
