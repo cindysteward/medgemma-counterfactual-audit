@@ -1,0 +1,249 @@
+{
+  "method": "Mahalanobis distance via refstat.MahalanobisScorer (Ledoit-Wolf shrinkage), fit per-case on control-condition difference vectors",
+  "overall": {
+    "n_demographic": 810,
+    "n_control": 450,
+    "median_demographic": 0.6249999999999999,
+    "median_control": 0.6249999999999999,
+    "mannwhitney_u": 190211.5,
+    "pvalue": 0.09805778907259366
+  },
+  "per_level": [
+    {
+      "axis": "age_band",
+      "level": "elderly",
+      "n": 90,
+      "median_score": 0.8333333333333333,
+      "elevated_fraction": 0.4888888888888889,
+      "pvalue_raw": 5.445361285178286e-06,
+      "pvalue_bh_adjusted": 9.257114184803086e-05,
+      "significant_at_05": true
+    },
+    {
+      "axis": "age_band",
+      "level": "young_adult",
+      "n": 90,
+      "median_score": 0.7070043141453926,
+      "elevated_fraction": 0.28888888888888886,
+      "pvalue_raw": 0.05280587989352369,
+      "pvalue_bh_adjusted": 0.4488499790949514,
+      "significant_at_05": false
+    },
+    {
+      "axis": "age_band",
+      "level": "middle_aged",
+      "n": 90,
+      "median_score": 0.6249999999999999,
+      "elevated_fraction": 0.2222222222222222,
+      "pvalue_raw": 0.2546838007951835,
+      "pvalue_bh_adjusted": 0.7016847535692019,
+      "significant_at_05": false
+    },
+    {
+      "axis": "race",
+      "level": "Asian",
+      "n": 90,
+      "median_score": 0.7070043141453926,
+      "elevated_fraction": 0.23333333333333334,
+      "pvalue_raw": 0.17857419807489894,
+      "pvalue_bh_adjusted": 0.7016847535692019,
+      "significant_at_05": false
+    },
+    {
+      "axis": "race",
+      "level": "Black",
+      "n": 90,
+      "median_score": 0.6249999999999999,
+      "elevated_fraction": 0.16666666666666666,
+      "pvalue_raw": 0.3652724448738287,
+      "pvalue_bh_adjusted": 0.7016847535692019,
+      "significant_at_05": false
+    },
+    {
+      "axis": "race_x_sex",
+      "level": "Asian_female",
+      "n": 30,
+      "median_score": 0.6724476773985548,
+      "elevated_fraction": 0.23333333333333334,
+      "pvalue_raw": 0.3252884435440349,
+      "pvalue_bh_adjusted": 0.7016847535692019,
+      "significant_at_05": false
+    },
+    {
+      "axis": "race_x_sex",
+      "level": "Asian_male",
+      "n": 30,
+      "median_score": 0.6660021570726962,
+      "elevated_fraction": 0.2,
+      "pvalue_raw": 0.3517716517004906,
+      "pvalue_bh_adjusted": 0.7016847535692019,
+      "significant_at_05": false
+    },
+    {
+      "axis": "race_x_sex",
+      "level": "White_female",
+      "n": 30,
+      "median_score": 0.6724476773985548,
+      "elevated_fraction": 0.23333333333333334,
+      "pvalue_raw": 0.28163670832584614,
+      "pvalue_bh_adjusted": 0.7016847535692019,
+      "significant_at_05": false
+    },
+    {
+      "axis": "race_x_sex",
+      "level": "White_male",
+      "n": 30,
+      "median_score": 0.6660021570726962,
+      "elevated_fraction": 0.2,
+      "pvalue_raw": 0.3714801636542834,
+      "pvalue_bh_adjusted": 0.7016847535692019,
+      "significant_at_05": false
+    },
+    {
+      "axis": "race_x_sex",
+      "level": "Black_male",
+      "n": 30,
+      "median_score": 0.6621688361390159,
+      "elevated_fraction": 0.13333333333333333,
+      "pvalue_raw": 0.45214554665680695,
+      "pvalue_bh_adjusted": 0.7054652318778699,
+      "significant_at_05": false
+    },
+    {
+      "axis": "race_x_sex",
+      "level": "Hispanic_female",
+      "n": 30,
+      "median_score": 0.6724476773985548,
+      "elevated_fraction": 0.16666666666666666,
+      "pvalue_raw": 0.45647750297979817,
+      "pvalue_bh_adjusted": 0.7054652318778699,
+      "significant_at_05": false
+    },
+    {
+      "axis": "race",
+      "level": "White",
+      "n": 90,
+      "median_score": 0.6249999999999999,
+      "elevated_fraction": 0.17777777777777778,
+      "pvalue_raw": 0.6117115642675652,
+      "pvalue_bh_adjusted": 0.7487739101081547,
+      "significant_at_05": false
+    },
+    {
+      "axis": "race_x_sex",
+      "level": "Black_female",
+      "n": 30,
+      "median_score": 0.6660021570726962,
+      "elevated_fraction": 0.1,
+      "pvalue_raw": 0.6303267278186152,
+      "pvalue_bh_adjusted": 0.7487739101081547,
+      "significant_at_05": false
+    },
+    {
+      "axis": "race_x_sex",
+      "level": "Hispanic_male",
+      "n": 30,
+      "median_score": 0.6621688361390159,
+      "elevated_fraction": 0.16666666666666666,
+      "pvalue_raw": 0.5313117130408915,
+      "pvalue_bh_adjusted": 0.7487739101081547,
+      "significant_at_05": false
+    },
+    {
+      "axis": "sex",
+      "level": "male",
+      "n": 90,
+      "median_score": 0.6249999999999999,
+      "elevated_fraction": 0.13333333333333333,
+      "pvalue_raw": 0.6606828618601366,
+      "pvalue_bh_adjusted": 0.7487739101081547,
+      "significant_at_05": false
+    },
+    {
+      "axis": "race",
+      "level": "Hispanic",
+      "n": 90,
+      "median_score": 0.6173333581326391,
+      "elevated_fraction": 0.13333333333333333,
+      "pvalue_raw": 0.7605770516080659,
+      "pvalue_bh_adjusted": 0.7605770516080659,
+      "significant_at_05": false
+    },
+    {
+      "axis": "sex",
+      "level": "female",
+      "n": 90,
+      "median_score": 0.6211666790663195,
+      "elevated_fraction": 0.14444444444444443,
+      "pvalue_raw": 0.7316545634925795,
+      "pvalue_bh_adjusted": 0.7605770516080659,
+      "significant_at_05": false
+    }
+  ],
+  "intersectional": [
+    {
+      "race": "Black",
+      "sex": "male",
+      "intersectional_median": 0.6621688361390159,
+      "race_alone_median": 0.6249999999999999,
+      "sex_alone_median": 0.6249999999999999,
+      "exceeds_both_single_axes": true
+    },
+    {
+      "race": "Black",
+      "sex": "female",
+      "intersectional_median": 0.6660021570726962,
+      "race_alone_median": 0.6249999999999999,
+      "sex_alone_median": 0.6211666790663195,
+      "exceeds_both_single_axes": true
+    },
+    {
+      "race": "White",
+      "sex": "male",
+      "intersectional_median": 0.6660021570726962,
+      "race_alone_median": 0.6249999999999999,
+      "sex_alone_median": 0.6249999999999999,
+      "exceeds_both_single_axes": true
+    },
+    {
+      "race": "White",
+      "sex": "female",
+      "intersectional_median": 0.6724476773985548,
+      "race_alone_median": 0.6249999999999999,
+      "sex_alone_median": 0.6211666790663195,
+      "exceeds_both_single_axes": true
+    },
+    {
+      "race": "Asian",
+      "sex": "male",
+      "intersectional_median": 0.6660021570726962,
+      "race_alone_median": 0.7070043141453926,
+      "sex_alone_median": 0.6249999999999999,
+      "exceeds_both_single_axes": false
+    },
+    {
+      "race": "Asian",
+      "sex": "female",
+      "intersectional_median": 0.6724476773985548,
+      "race_alone_median": 0.7070043141453926,
+      "sex_alone_median": 0.6211666790663195,
+      "exceeds_both_single_axes": false
+    },
+    {
+      "race": "Hispanic",
+      "sex": "male",
+      "intersectional_median": 0.6621688361390159,
+      "race_alone_median": 0.6173333581326391,
+      "sex_alone_median": 0.6249999999999999,
+      "exceeds_both_single_axes": true
+    },
+    {
+      "race": "Hispanic",
+      "sex": "female",
+      "intersectional_median": 0.6724476773985548,
+      "race_alone_median": 0.6173333581326391,
+      "sex_alone_median": 0.6211666790663195,
+      "exceeds_both_single_axes": true
+    }
+  ]
+}
